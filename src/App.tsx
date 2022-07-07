@@ -1,25 +1,19 @@
 import React from 'react';
 import './scss/app.scss'
-import Header from "./Components/Header";
-import Categories from "./Components/Categories";
-import Sort from "./Components/Sort";
-import FullPizza from "./Components/FullPizza";
+
+import {Routes, Route} from 'react-router-dom';
+import MainLayout from "./Components/MainLayout";
+import Cart from "./Components/Cart";
 
 const App = () => {
     return (
-        <div className="wrapper">
-           <Header/>
-            <div className="content">
-                <div className="container">
-                    <div className="content__top">
-                        <Categories/>
-                       <Sort/>
-                    </div>
-                    <FullPizza/>
-                </div>
-            </div>
-        </div>
-    );
+        <Routes>
+            <Route path={'/'} element= {<MainLayout/>} />
+            <Route path = {'/cart.html'} element={<Cart/>} />
+        </Routes>
+
+    )
+        ;
 }
 
 export default App;
