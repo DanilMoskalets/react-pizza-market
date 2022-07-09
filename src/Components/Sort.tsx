@@ -1,6 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const Sort = () => {
+    const [sortIndex, setSortIndex] = useState<number>(0)
+    const [sortPopup, setSortPopup] = useState<boolean>(false)
+    const [sortActive, setSortActive] = useState<string>('популярности')
+
+    const changeSort = (index: number, active: string) => {
+        setSortIndex(index)
+        setSortActive(active)
+        setSortPopup(false)
+    }
+
     return (
         <div className="sort">
             <div className="sort__label">
@@ -17,15 +27,26 @@ const Sort = () => {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span>популярности</span>
+                <span onClick={() => setSortPopup(!sortPopup)}>{sortActive}</span>
             </div>
-            <div className="sort__popup">
-                <ul>
-                    <li className="active">популярности</li>
-                    <li>цене</li>
-                    <li>алфавиту</li>
-                </ul>
-            </div>
+            {sortPopup
+                ?
+                <div className="sort__popup">
+                    <ul>
+                        <li onClick={() => changeSort(0, 'популярности')}
+                            className={sortIndex === 0 ? 'active' : ''}>популярности
+                        </li>
+                        <li onClick={() => changeSort(1, 'цене')} className={sortIndex === 1 ? 'active' : ''}>цене</li>
+                        <li onClick={() => changeSort(2, 'алфавиту')}
+                            className={sortIndex === 2 ? 'active' : ''}>алфавиту
+                        </li>
+                    </ul>
+
+                </div>
+                :
+                ''
+            }
+
         </div>
     );
 };
