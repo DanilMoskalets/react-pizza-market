@@ -2,7 +2,7 @@ import React from 'react';
 import Categories from "./Categories";
 import Sort from "./Sort";
 import Header from "./Header";
-import FullPizza from "./FullPizza";
+import PizzaBlock from "./Pizza-block/PizzaBlock";
 
 const MainLayout = () => {
     return (
@@ -14,7 +14,7 @@ const MainLayout = () => {
                             <Categories/>
                             <Sort/>
                         </div>
-                        <FullPizza/>
+                        <PizzaBlock/>
                     </div>
                 </div>
             </div>
